@@ -1,40 +1,40 @@
 package com.cleancode.knuth;
 
 public class PrimePrinterHelper {
-    private final int numberOfPrimes = 1000; // Nombre total de nombres premiers à générer
-    private final int[] primes = new int[numberOfPrimes + 1]; // Tableau pour stocker les nombres premiers
-    private final int linesPerPage = 50; // Nombre de lignes par page
-    private final int columns = 4; // Nombre de colonnes
+    private final int numberOfPrimes = 1000;
+    private final int[] primes = new int[numberOfPrimes + 1];
+    private final int linesPerPage = 50;
+    private final int columns = 4;
 
     public void printNumbers() {
-        generatePrimes(); // Appel à la méthode pour générer les nombres premiers
-        printPrimes(primes, numberOfPrimes); // Appel à la méthode pour imprimer les nombres premiers
+        generatePrimes();
+        printPrimes(primes, numberOfPrimes);
     }
 
     private void generatePrimes() {
-        primes[1] = 2; // Le premier nombre premier est 2
-        int primeIndex = 1; // Index pour suivre le nombre de premiers trouvés
-        int candidate = 1; // Candidat pour le prochain nombre premier
-        boolean possiblyPrime; // Indicateur pour savoir si le candidat est un nombre premier
+        primes[1] = 2;
+        int primeIndex = 1;
+        int candidate = 1;
+        boolean possiblyPrime;
 
         while (primeIndex < numberOfPrimes) {
-            candidate += 2; // On ne considère que les nombres impairs
-            possiblyPrime = true; // On suppose que le candidat est un nombre premier
+            candidate += 2;
+            possiblyPrime = true;
             for (int n = 2; n <= primeIndex && possiblyPrime; n++) {
                 if (candidate % primes[n] == 0) {
-                    possiblyPrime = false; // Le candidat n'est pas premier
+                    possiblyPrime = false;
                 }
             }
             if (possiblyPrime) {
                 primeIndex++;
-                primes[primeIndex] = candidate; // On ajoute le nombre premier trouvé au tableau
+                primes[primeIndex] = candidate;
             }
         }
     }
 
     private void printPrimes(int[] numbers, int numberOfNumbers) {
-        int pageNumber = 1; // Numéro de la page
-        int pageOffset = 1; // Décalage de la page
+        int pageNumber = 1;
+        int pageOffset = 1;
 
         while (pageOffset <= numberOfNumbers) {
             System.out.println("The First " + numberOfNumbers + " Prime Numbers === Page " + pageNumber);
@@ -48,7 +48,7 @@ public class PrimePrinterHelper {
             }
             System.out.println();
             pageNumber++;
-            pageOffset += linesPerPage * columns; // Mise à jour du décalage de la page
+            pageOffset += linesPerPage * columns;
         }
     }
 }
