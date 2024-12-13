@@ -21,5 +21,6 @@ public class Exercise3 {
             default:
                 return result;
         }
+        return 0;
     }
 }
