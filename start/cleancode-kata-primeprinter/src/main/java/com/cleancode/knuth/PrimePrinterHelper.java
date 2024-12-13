@@ -35,20 +35,20 @@ public class PrimePrinterHelper {
                 primes[primeIndex] = candidate;
             }
         }
-        printPrimes(primes, numberOfPrimes);
+        printNumbers(primes, numberOfPrimes);
     }
 
-    private void printPrimes(int[] primes, int numberOfPrimes) {
-        while (pageoffset <= numberOfPrimes) {
+    public void printNumbers(int[] numbers, int numberOfNumbers) {
+        while (pageoffset <= numberOfNumbers) {
             System.out.print("The First ");
-            System.out.print(Integer.toString(numberOfPrimes));
+            System.out.print(Integer.toString(numberOfNumbers));
             System.out.print(" Prime Numbers === Page ");
             System.out.print(Integer.toString(pagenumber));
             System.out.println("\n");
             for (rowoffset = pageoffset; rowoffset <= pageoffset + linesPerPage - 1; rowoffset++) {
                 for (column = 0; column <= columns - 1; column++)
-                    if (rowoffset + column * linesPerPage <= numberOfPrimes)
-                        System.out.printf("%10d", primes[rowoffset + column * linesPerPage]);
+                    if (rowoffset + column * linesPerPage <= numberOfNumbers)
+                        System.out.printf("%10d", numbers[rowoffset + column * linesPerPage]);
                 System.out.println();
             }
             System.out.println("\f");
@@ -56,6 +56,7 @@ public class PrimePrinterHelper {
             pageoffset += linesPerPage * columns;
         }
     }
+
 }
 
 
