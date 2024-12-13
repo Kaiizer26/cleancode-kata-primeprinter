@@ -14,7 +14,6 @@ public class Exercise3 {
             case 3:
                 result = (0.7 * amount) - disc * (0.7 * amount);
                 return result;
-                break;
             case 4:
                 result = (amount - (0.5 * amount)) - disc * (amount - (0.5 * amount));
                 break;
