@@ -23,43 +23,23 @@ public class PrimePrinterHelper {
         primes[1] = 2;
 
         while (primeIndex < numberOfPrimes) {
-            do {
-                candidate += 2;
-                if (candidate == square) {
-                    ord++;
-                    square = primes[ord] * primes[ord];
-                    multiples[ord - 1] = candidate;
+            candidate += 2;
+            possiblyPrime = true;
+            for (int n = 2; n <= primeIndex && possiblyPrime; n++) {
+                if (candidate % primes[n] == 0) {
+                    possiblyPrime = false;
                 }
-                n = 2;
-                possiblyPrime = true;
-                while (n < ord && possiblyPrime) {
-                    while (multiples[n] < candidate)
-                        multiples[n] += primes[n] + primes[n];
-                    if (multiples[n] == candidate)
-                        possiblyPrime = false;
-                    n++;
-                }
-            } while (!possiblyPrime);
-            primeIndex++;
-            primes[primeIndex] = candidate;
-        }
-
-        while (pageoffset <= numberOfPrimes) {
-            System.out.print("The First ");
-            System.out.print(Integer.toString(numberOfPrimes));
-            System.out.print(" Prime Numbers === Page ");
-            System.out.print(Integer.toString(pagenumber));
-            System.out.println("\n");
-            for (rowoffset = pageoffset; rowoffset <= pageoffset + linesPerPage - 1; rowoffset++) {
-                for (column = 0; column <= columns - 1; column++)
-                    if (rowoffset + column * linesPerPage <= numberOfPrimes)
-                        System.out.printf("%10d", primes[rowoffset + column * linesPerPage]);
-                System.out.println();
             }
-            System.out.println("\f");
-            pagenumber++;
-            pageoffset += linesPerPage * columns;
-
+            if (possiblyPrime) {
+                primeIndex++;
+                primes[primeIndex] = candidate;
+            }
         }
+
+    }
+
+    private void printPrimes(int[] primes, int numberOfPrimes) {
     }
 }
+
+
