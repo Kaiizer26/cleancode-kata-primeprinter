@@ -20,9 +20,7 @@ public class Exercise1 {
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
+
     }
 }
